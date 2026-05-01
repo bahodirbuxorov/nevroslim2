@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --color-primary: #0000FF;
+  --color-secondary: #003262;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.07);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes translate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.scale {
+  animation: scale 3s ease-in-out infinite;
+}
+
+.translate {
+  animation: translate 5s ease-in-out infinite;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F4F7FF;
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  background: #F4F7FF;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #0000FF;
+  border-radius: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}
+
+.shine-text {
+  background: radial-gradient(circle at center,
+      #0000FF 0%,
+      #869cb0 40%,
+      #0000FF 80%);
+  background-size: 200%;
+  background-repeat: repeat;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 1464px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.swiper-pagination-bullet {
+  background: #8da0ad !important;
+  width: 20px !important;
+  height: 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #5D8AA8 !important;
+  width: 80px !important;
+}
+
+.swiper-wrapper {
+  align-items: center !important;
+}
+
+.swiper-pagination-custom {
+  width: auto !important;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-pagination-bullet {
+    width: 12px !important;
+    height: 5px !important;
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 40px !important;
+  }
+}
