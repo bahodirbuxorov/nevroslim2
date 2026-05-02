@@ -17,6 +17,7 @@
           class="w-full h-full translate object-cover"
         >
         <UButton
+          id="header-consult-btn"
           size="xl"
           class="rounded-full px-12 text-xl font-bold mt-8 shadow-lg hover:scale-105 transition-transform"
           color="primary"

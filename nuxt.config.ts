@@ -49,7 +49,9 @@ export default defineNuxtConfig({
           name: 'twitter:description',
           content: 'Болалардазехн ва хотирани кучайтиради , Бўшашиш ва йиғлоқилик , Суякларини мустахкамлайди , Асабларини тинчлантириб беради , Сўз ёдлаш қобилияти , Кайфиятни кўтариб уйқуни яхшилайди , Мияда қон айланишни яхшилайди ,Юрак оғриғи ва юрак ўйнашида фойдали , Қон босимиортиши ва қабзиятда самарали'
         },
-        { name: 'twitter:image', content: '/png/screenshot.png' }
+        { name: 'twitter:image', content: '/png/screenshot.png' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' }
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
       htmlAttrs: {
@@ -57,30 +59,25 @@ export default defineNuxtConfig({
       },
       script: [
         {
-          innerHTML: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '986170930547424');
-            fbq('track', 'PageView');
-          `,
-          type: 'text/javascript',
-          id: 'fb-pixel-script'
+          children: `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '986170930547424');
+fbq('track', 'PageView');`,
+          type: 'text/javascript'
         }
       ],
       noscript: [
         {
-          children: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=986170930547424&ev=PageView&noscript=1" />`
+          children: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=986170930547424&ev=PageView&noscript=1" />`,
+          body: true
         }
-      ],
-      __dangerouslyDisableSanitizersByTagID: {
-        'fb-pixel-script': ['innerHTML']
-      }
+      ]
     }
   },
 

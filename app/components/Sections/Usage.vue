@@ -54,6 +54,7 @@
 
       <div class="flex justify-center mt-8">
         <UButton
+          id="usage-consult-btn"
           size="xl"
           class="rounded-full px-8 text-lg font-bold"
           color="primary"

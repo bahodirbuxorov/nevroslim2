@@ -344,6 +344,12 @@ async function submitForm() {
       }
     })
 
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: 'Consultation Form'
+      })
+    }
+
     savePhone(normalizedPhone)
     name.value = ''
     phone.value = '+998'
