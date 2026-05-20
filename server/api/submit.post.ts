@@ -3,7 +3,7 @@ import { normalizeOrderPayload, sendToTelegram, sendToBitrix } from '../utils/ga
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
 	const packet = normalizeOrderPayload(body ?? {});
-	const config = useRuntimeConfig();
+	const config = useRuntimeConfig(event);
 
 	if (!packet.name || packet.phone.length < 5) {
 		throw createError({
