@@ -98,6 +98,7 @@ fbq('track', 'PageView');`,
   },
 
   nitro: {
+    preset: 'cloudflare-pages',
     compressPublicAssets: true
   },
 
