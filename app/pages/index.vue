@@ -31,6 +31,12 @@
       class="mt-6 lg:mt-10"
     />
     <SectionsCertification />
+    <USeparator
+      color="primary"
+      icon="twemoji:leaf-fluttering-in-wind"
+      class="mt-6 lg:mt-10"
+    />
+    <SectionsConsultation />
   </div>
 </template>
 

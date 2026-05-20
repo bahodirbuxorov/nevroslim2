@@ -1,6 +1,7 @@
 export interface OrderPayload {
 	name: string;
 	phone: string;
+	region?: string;
 	purpose?: string;
 	purpose_label?: string;
 	problems?: string[];
@@ -13,6 +14,7 @@ export function normalizeOrderPayload(body: Record<string, unknown>): OrderPaylo
 	const rawPhone = typeof body.phone === 'string' ? body.phone : '';
 	const purifiedDigits = rawPhone.replace(/\D/g, '');
 
+	const region = typeof body.region === 'string' && body.region.trim() ? body.region.trim() : undefined;
 	const purpose = typeof body.purpose === 'string' ? body.purpose : undefined;
 	const purpose_label = typeof body.purpose_label === 'string' ? body.purpose_label : undefined;
 	const problems = Array.isArray(body.problems) ? body.problems.filter((p): p is string => typeof p === 'string') : undefined;
@@ -22,6 +24,7 @@ export function normalizeOrderPayload(body: Record<string, unknown>): OrderPaylo
 	return {
 		name: rawName.trim(),
 		phone: `+${purifiedDigits}`,
+		region,
 		purpose,
 		purpose_label,
 		problems,
@@ -41,6 +44,10 @@ export async function sendToTelegram(
 		`👤 Исм: ${payload.name}`,
 		`📞 Телефон: ${payload.phone}`,
 	];
+
+	if (payload.region) {
+		lines.push(`📍 Вилоят: ${payload.region}`);
+	}
 
 	if (payload.purpose_label) {
 		lines.push('', `📌 Мақсад: ${payload.purpose_label}`);
@@ -79,8 +86,13 @@ export async function sendToBitrix(
 		SOURCE_ID: 'UC_YOX5UO',
 	};
 
+	if (payload.region) {
+		fields.COMMENTS = `Вилоят: ${payload.region}`;
+	}
+
 	if (payload.purpose_label) {
-		fields.COMMENTS = `Мақсад: ${payload.purpose_label}`;
+		const existing = typeof fields.COMMENTS === 'string' ? fields.COMMENTS + '\n' : '';
+		fields.COMMENTS = existing + `Мақсад: ${payload.purpose_label}`;
 	}
 
 	if (payload.problems && payload.problems.length > 0) {

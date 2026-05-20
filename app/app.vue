@@ -1,15 +1,13 @@
 <script setup>
-const isPopupOpen = ref(false)
-
-function openConsultPopup() {
-  isPopupOpen.value = true
+function scrollToConsultForm() {
+  if (typeof document === 'undefined') return
+  const el = document.getElementById('consultation')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
-function closeConsultPopup() {
-  isPopupOpen.value = false
-}
-
-provide('openConsultPopup', openConsultPopup)
+provide('scrollToConsultForm', scrollToConsultForm)
 </script>
 
 <template>
@@ -20,9 +18,5 @@ provide('openConsultPopup', openConsultPopup)
     <NuxtPage />
     <AppFooter />
     <UiCall />
-    <ConsultationPopup
-      :is-open="isPopupOpen"
-      @close="closeConsultPopup"
-    />
   </UApp>
 </template>

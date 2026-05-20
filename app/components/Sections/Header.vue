@@ -70,11 +70,11 @@
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
-const openConsultPopup = inject<() => void>('openConsultPopup')
+const scrollToConsultForm = inject<() => void>('scrollToConsultForm')
 
 function handleConsultClick() {
-  if (openConsultPopup) {
-    openConsultPopup()
+  if (scrollToConsultForm) {
+    scrollToConsultForm()
   }
 }
 

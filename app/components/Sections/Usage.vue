@@ -68,11 +68,11 @@
 </template>
 
 <script setup lang="ts">
-const openConsultPopup = inject<() => void>('openConsultPopup')
+const scrollToConsultForm = inject<() => void>('scrollToConsultForm')
 
 function handleConsultClick() {
-  if (openConsultPopup) {
-    openConsultPopup()
+  if (scrollToConsultForm) {
+    scrollToConsultForm()
   }
 }
 const usages = [
